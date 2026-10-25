@@ -8,7 +8,6 @@ research/sniper-repository.json
 research/sniper-unlockables.json
 research/manifest-schema.json
 research/smf-*.ts
-research/debug-211/
 research/menus-vanilla/
 build/
 tools/*.exe

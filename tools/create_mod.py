@@ -178,12 +178,6 @@ def create():
          'path': prefix + '/do/children/$mergearrays/1/$each'},
     ])
     write_json(leaf_path, leaf_patch)
-    # Remove only known obsolete generated files inside this mod, so source
-    # regeneration cannot silently ship both the old and new approaches.
-    for relative in ['fileEdits/chunk0/stashpoint_page.JSON.patch.json',
-                     'newBlobs/' + BLOB_PREFIX + 'extraslots_snipertrio_items.json',
-                     'newBlobs/' + BLOB_PREFIX + 'extraslots_snipertrio_loadout.json']:
-        (MOD / relative).unlink(missing_ok=True)
     if (ROOT / 'README.md').exists():
         shutil.copyfile(ROOT / 'README.md', MOD / 'README.zh-CN.md')
     print(f'Created {MOD.relative_to(ROOT)}')
