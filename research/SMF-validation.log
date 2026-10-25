@@ -1,0 +1,12 @@
+INFO Discovering mod contents
+INFO Discovering mod: Extra Loadout Slots - Sniper Trio
+INFO Invalidating cache
+INFO Analysing framework mod: Extra Loadout Slots - Sniper Trio
+INFO Deploying enjoy.ExtraLoadoutSniperTrio
+DEBUG Applying JSON patch C:\repos\tmp\hitman_woa_mod\build\smf-validation\SMF\Mods\Extra Loadout Slots - Sniper Trio\fileEdits\chunk0\context_loadout.JSON.patch.json
+DEBUG Applying JSON patch C:\repos\tmp\hitman_woa_mod\build\smf-validation\SMF\Mods\Extra Loadout Slots - Sniper Trio\fileEdits\chunk0\planning_page.JSON.patch.json
+DEBUG Applying JSON patch C:\repos\tmp\hitman_woa_mod\build\smf-validation\SMF\Mods\Extra Loadout Slots - Sniper Trio\fileEdits\chunk0\stashpointslot.JSON.patch.json
+INFO Localising text
+INFO Patching packagedefinition
+INFO Generating RPKGs
+INFO Done in 8s

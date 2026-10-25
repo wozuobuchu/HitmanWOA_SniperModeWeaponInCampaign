@@ -1,0 +1,45 @@
+{
+  "$if $eq($arraysize $.counter,$arraysize $.slotsData)": {
+    "$then": "$.accumulator",
+    "$else": {
+      "$datacontext": {
+        "in": "$.",
+        "datavalues": {
+          "slotsData": "$.slotsData",
+          "slotIdToRemove": "$.slotIdToRemove",
+          "counter": {
+            "$mergearrays": [
+              "$.counter",
+              [
+                "$arraysize $.counter"
+              ]
+            ]
+          },
+          "accumulator": {
+            "$if $eq($arraysize $.counter,$.slotIdToRemove)": {
+              "$then": "$.accumulator",
+              "$else": {
+                "$mergearrays": [
+                  "$.accumulator",
+                  [
+                    {
+                      "$mergeobjects": [
+                        "$.slotsData[$arraysize $.counter]",
+                        {
+                          "extraslotnum": "$arraysize $.accumulator"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            }
+          }
+        },
+        "do": {
+          "$include": "menusystem/pages/planning/content/extraslots_slotsdata_removeone.json"
+        }
+      }
+    }
+  }
+}

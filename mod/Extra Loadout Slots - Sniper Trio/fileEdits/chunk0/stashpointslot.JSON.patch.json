@@ -1,0 +1,64 @@
+{
+  "file": "00595CD49B4ACA64",
+  "type": "JSON",
+  "patch": [
+    {
+      "op": "add",
+      "path": "/$if $isnullorempty $.Items/$else/$datacontext/do/children/$each/do/children/0/children/$each/do/$if/$then/$mergeobjects/1/$datacontext/datavalues/SlotId",
+      "value": {
+        "$if $eq($.SlotId,9fff18d3-6d6f-433c-a3f4-794b9cdfa8a5)": {
+          "$then": "5",
+          "$else": "$.SlotId"
+        }
+      }
+    },
+    {
+      "op": "move",
+      "from": "/$if $isnullorempty $.Items",
+      "path": "/$if"
+    },
+    {
+      "op": "add",
+      "path": "/$if/$condition",
+      "value": {
+        "$and": [
+          "$isnullorempty $.Items",
+          {
+            "$if": {
+              "$condition": {
+                "$include": "menusystem/pages/planning/content/extraslots_snipertrio_eligible.json"
+              },
+              "$then": false,
+              "$else": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/$if/$else/$datacontext/datavalues/GroupedItems/$arraygroupby/source/$arraysort/source",
+      "value": {
+        "$if $isnullorempty $.Items": {
+          "$then": [],
+          "$else": "$.Items"
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/$if/$else/$datacontext/do/children/$mergearrays",
+      "value": [
+        {
+          "$include": "menusystem/pages/planning/content/extraslots_snipertrio_category.json"
+        },
+        {}
+      ]
+    },
+    {
+      "op": "move",
+      "from": "/$if/$else/$datacontext/do/children/$each",
+      "path": "/$if/$else/$datacontext/do/children/$mergearrays/1/$each"
+    }
+  ]
+}

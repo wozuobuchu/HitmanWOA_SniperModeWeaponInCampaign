@@ -1,0 +1,332 @@
+{
+  "$if": {
+    "$condition": {
+      "$include": "menusystem/pages/planning/content/extraslots_snipertrio_eligible.json"
+    },
+    "$then": [
+      {
+        "id": "els_sa_container",
+        "view": "menu3.basic.SubCategoryElement",
+        "controller": "categoryitem",
+        "data": {
+          "title": "$loc UI_ELS_SA_CATEGORY"
+        },
+        "children": [
+          {
+            "controller": "group",
+            "view": "menu3.containers.ScrollingListContainer",
+            "id": "els_sa_scroll_container",
+            "layoutchildren": true,
+            "row": 1,
+            "nrows": 3,
+            "ncols": 10,
+            "direction": "horizontal",
+            "data": {
+              "direction": "horizontal"
+            },
+            "children": [
+              {
+                "id": "ELS_SA_HIMMELSTEIN",
+                "view": "menu3.basic.ItemTileSmall",
+                "nrows": 1.5,
+                "ncols": 2,
+                "pressable": true,
+                "data": {
+                  "header": "$loc UI_ELS_SA_CATEGORY",
+                  "title": "$loc UI_ELS_SA_HIMMELSTEIN_NAME",
+                  "image": "$res {$repository 5f5e10e1-4c38-4fd0-ac16-8f42526ab232}.Image",
+                  "icon": "sniperrifle",
+                  "rarity": "common",
+                  "perks": "{$repository 5f5e10e1-4c38-4fd0-ac16-8f42526ab232}.Perks"
+                },
+                "actions": {
+                  "select": {
+                    "replace-children": {
+                      "target": "headline_container",
+                      "children": [
+                        {
+                          "view": "menu3.basic.ItemHeadlineElement",
+                          "data": {
+                            "header": "$loc UI_ELS_SA_CATEGORY",
+                            "title": "$loc UI_ELS_SA_HIMMELSTEIN_NAME",
+                            "image": "$res {$repository 5f5e10e1-4c38-4fd0-ac16-8f42526ab232}.Image",
+                            "icon": "sniperrifle",
+                            "rarity": "common",
+                            "perks": "{$repository 5f5e10e1-4c38-4fd0-ac16-8f42526ab232}.Perks"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "deselect": {
+                    "replace-children": {
+                      "target": "headline_container",
+                      "children": []
+                    }
+                  },
+                  "accept": [
+                    {
+                      "$if $.@global.args.set-stashpoint": {
+                        "$then": {
+                          "set-loadout-agencypickup": {
+                            "id": "$.@global.args.stashpoint"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "loadout": {
+                        "mode": "equip",
+                        "slotid": "$.@global.args.slotid",
+                        "instance": {
+                          "InstanceId": "8475515c-9f2b-5ca5-bf81-42d377c44c2d",
+                          "Unlockable": {
+                            "Id": "ELS_SA_HIMMELSTEIN",
+                            "Guid": "068124fe-1ec5-5811-9836-a0ecb384da99",
+                            "Type": "weapon",
+                            "Subtype": "sniperrifle",
+                            "ImageId": "",
+                            "RMTPrice": 0,
+                            "GamePrice": 0,
+                            "IsPurchasable": false,
+                            "IsPublished": true,
+                            "IsDroppable": false,
+                            "Capabilities": [],
+                            "Qualities": {},
+                            "Rarity": "common",
+                            "Properties": {
+                              "Name": "UI_ELS_SA_HIMMELSTEIN_NAME",
+                              "Description": "UI_ELS_SA_DESCRIPTION",
+                              "Quality": 4,
+                              "Rarity": "common",
+                              "LoadoutSlot": "carriedweapon",
+                              "RepositoryId": "5f5e10e1-4c38-4fd0-ac16-8f42526ab232"
+                            }
+                          },
+                          "Properties": {}
+                        }
+                      },
+                      "request-back": {
+                        "target": [
+                          "contractcreation_planning",
+                          "planning",
+                          "multiplayer",
+                          "gamemode_versus"
+                        ],
+                        "usecache": {
+                          "$if $isnull $.@global.args.usecacheonreturn": {
+                            "$then": false,
+                            "$else": "$.@global.args.usecacheonreturn"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "ELS_SA_HANTU",
+                "view": "menu3.basic.ItemTileSmall",
+                "nrows": 1.5,
+                "ncols": 2,
+                "pressable": true,
+                "data": {
+                  "header": "$loc UI_ELS_SA_CATEGORY",
+                  "title": "$loc UI_ELS_SA_HANTU_NAME",
+                  "image": "$res {$repository c8b2d7ab-c952-4ad3-99fe-4627047318b9}.Image",
+                  "icon": "sniperrifle",
+                  "rarity": "common",
+                  "perks": "{$repository c8b2d7ab-c952-4ad3-99fe-4627047318b9}.Perks"
+                },
+                "actions": {
+                  "select": {
+                    "replace-children": {
+                      "target": "headline_container",
+                      "children": [
+                        {
+                          "view": "menu3.basic.ItemHeadlineElement",
+                          "data": {
+                            "header": "$loc UI_ELS_SA_CATEGORY",
+                            "title": "$loc UI_ELS_SA_HANTU_NAME",
+                            "image": "$res {$repository c8b2d7ab-c952-4ad3-99fe-4627047318b9}.Image",
+                            "icon": "sniperrifle",
+                            "rarity": "common",
+                            "perks": "{$repository c8b2d7ab-c952-4ad3-99fe-4627047318b9}.Perks"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "deselect": {
+                    "replace-children": {
+                      "target": "headline_container",
+                      "children": []
+                    }
+                  },
+                  "accept": [
+                    {
+                      "$if $.@global.args.set-stashpoint": {
+                        "$then": {
+                          "set-loadout-agencypickup": {
+                            "id": "$.@global.args.stashpoint"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "loadout": {
+                        "mode": "equip",
+                        "slotid": "$.@global.args.slotid",
+                        "instance": {
+                          "InstanceId": "82a41291-797e-5943-8b33-86651560426b",
+                          "Unlockable": {
+                            "Id": "ELS_SA_HANTU",
+                            "Guid": "e8f52a99-5e46-51b1-8699-e0a3c890e49a",
+                            "Type": "weapon",
+                            "Subtype": "sniperrifle",
+                            "ImageId": "",
+                            "RMTPrice": 0,
+                            "GamePrice": 0,
+                            "IsPurchasable": false,
+                            "IsPublished": true,
+                            "IsDroppable": false,
+                            "Capabilities": [],
+                            "Qualities": {},
+                            "Rarity": "common",
+                            "Properties": {
+                              "Name": "UI_ELS_SA_HANTU_NAME",
+                              "Description": "UI_ELS_SA_DESCRIPTION",
+                              "Quality": 4,
+                              "Rarity": "common",
+                              "LoadoutSlot": "carriedweapon",
+                              "RepositoryId": "c8b2d7ab-c952-4ad3-99fe-4627047318b9"
+                            }
+                          },
+                          "Properties": {}
+                        }
+                      },
+                      "request-back": {
+                        "target": [
+                          "contractcreation_planning",
+                          "planning",
+                          "multiplayer",
+                          "gamemode_versus"
+                        ],
+                        "usecache": {
+                          "$if $isnull $.@global.args.usecacheonreturn": {
+                            "$then": false,
+                            "$else": "$.@global.args.usecacheonreturn"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "ELS_SA_SIBERIA",
+                "view": "menu3.basic.ItemTileSmall",
+                "nrows": 1.5,
+                "ncols": 2,
+                "pressable": true,
+                "data": {
+                  "header": "$loc UI_ELS_SA_CATEGORY",
+                  "title": "$loc UI_ELS_SA_SIBERIA_NAME",
+                  "image": "$res {$repository 2f209936-1427-43b6-9812-d6f60b24336f}.Image",
+                  "icon": "sniperrifle",
+                  "rarity": "common",
+                  "perks": "{$repository 2f209936-1427-43b6-9812-d6f60b24336f}.Perks"
+                },
+                "actions": {
+                  "select": {
+                    "replace-children": {
+                      "target": "headline_container",
+                      "children": [
+                        {
+                          "view": "menu3.basic.ItemHeadlineElement",
+                          "data": {
+                            "header": "$loc UI_ELS_SA_CATEGORY",
+                            "title": "$loc UI_ELS_SA_SIBERIA_NAME",
+                            "image": "$res {$repository 2f209936-1427-43b6-9812-d6f60b24336f}.Image",
+                            "icon": "sniperrifle",
+                            "rarity": "common",
+                            "perks": "{$repository 2f209936-1427-43b6-9812-d6f60b24336f}.Perks"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "deselect": {
+                    "replace-children": {
+                      "target": "headline_container",
+                      "children": []
+                    }
+                  },
+                  "accept": [
+                    {
+                      "$if $.@global.args.set-stashpoint": {
+                        "$then": {
+                          "set-loadout-agencypickup": {
+                            "id": "$.@global.args.stashpoint"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "loadout": {
+                        "mode": "equip",
+                        "slotid": "$.@global.args.slotid",
+                        "instance": {
+                          "InstanceId": "eec6ef22-855a-51cb-855d-369838a79b6a",
+                          "Unlockable": {
+                            "Id": "ELS_SA_SIBERIA",
+                            "Guid": "988b271e-60bf-5764-b417-82e2db03c6b6",
+                            "Type": "weapon",
+                            "Subtype": "sniperrifle",
+                            "ImageId": "",
+                            "RMTPrice": 0,
+                            "GamePrice": 0,
+                            "IsPurchasable": false,
+                            "IsPublished": true,
+                            "IsDroppable": false,
+                            "Capabilities": [],
+                            "Qualities": {},
+                            "Rarity": "common",
+                            "Properties": {
+                              "Name": "UI_ELS_SA_SIBERIA_NAME",
+                              "Description": "UI_ELS_SA_DESCRIPTION",
+                              "Quality": 4,
+                              "Rarity": "common",
+                              "LoadoutSlot": "carriedweapon",
+                              "RepositoryId": "2f209936-1427-43b6-9812-d6f60b24336f"
+                            }
+                          },
+                          "Properties": {}
+                        }
+                      },
+                      "request-back": {
+                        "target": [
+                          "contractcreation_planning",
+                          "planning",
+                          "multiplayer",
+                          "gamemode_versus"
+                        ],
+                        "usecache": {
+                          "$if $isnull $.@global.args.usecacheonreturn": {
+                            "$then": false,
+                            "$else": "$.@global.args.usecacheonreturn"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "$else": []
+  }
+}

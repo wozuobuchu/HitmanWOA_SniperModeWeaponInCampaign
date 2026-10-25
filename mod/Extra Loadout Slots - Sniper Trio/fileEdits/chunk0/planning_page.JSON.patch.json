@@ -1,0 +1,170 @@
+{
+	"file": "00E2C98879D3238A",
+	"type": "JSON",
+	"patch": [{
+		"op": "add",
+		"path": "/$databinding menusystem~1pages~1planning~1data~1data_planningpage.json/children/-",
+		"value": {
+			"controller": "container",
+			"id": "extraslots_planning",
+			"actions": {
+				"$datacontext": {
+					"in": "$.",
+					"datavalues": {
+						"slotsData": {
+							"$if $not $isnull $($loadoutslot 0).Item.unlockable.slotsData": {
+								"$then": "$($loadoutslot 0).Item.unlockable.slotsData",
+								"$else": [
+									{
+										"extraslotnum": 0,
+										"placeholder": true
+									}
+								]
+							}
+						},
+						"lastEditedSlot": "$($loadoutslot 0).Item.unlockable.ActivatedSlot",
+						"savedSlotInstance": "$($loadoutslot 0).Item.unlockable.SavedSlotInstance",
+						"rebuildRepoIds": "$($loadoutslot 0).Item.unlockable.rebuildRepoIds",
+						"placeholderSlotItem": "$($loadoutslot 5).Item"
+					},
+					"do": {
+						"activated": {
+							"$mergearrays": [
+								{
+									"$if $not $isnull $.lastEditedSlot": {
+										"$then": [
+											{
+												"loadout": {
+													"mode": "equip",
+													"slotid": "0",
+													"instance": {
+														"InstanceId": "$formatstring Extra loadoutslots compound item - after equipping to slot {$.lastEditedSlot}",
+														"Unlockable": {
+															"$datacontext": {
+																"in": "$.",
+																"datavalues": {
+																	"newSlotsData": {
+																		"$if $.placeholderSlotItem.equipped": {
+																			"$then": {
+																				"$datacontext": {
+																					"in": "$.",
+																					"datavalues": {
+																						"slotsData": "$.slotsData",
+																						"editedSlotId": "$.lastEditedSlot",
+																						"editedSlotData": {
+																							"extraslotnum": "$.lastEditedSlot",
+																							"item": "$.placeholderSlotItem",
+																							"count": "{$item $.placeholderSlotItem.unlockable}.itemcount",
+																							"alreadyismultiple": "$not $eq({$item $.placeholderSlotItem.unlockable}.itemcount,0)"
+																						},
+																						"accumulator": []
+																					},
+																					"do": {
+																						"$include": "menusystem/pages/planning/content/extraslots_slotsdata_constructor.json"
+																					}
+																				}
+																			},
+																			"$else": {
+																				"slots": "$.slotsData",
+																				"last": {
+																					"placeholder": true
+																				}
+																			}
+																		}
+																	}
+																},
+																"do": {
+																	"slotsData": {
+																		"$if $.newSlotsData.last.placeholder": {
+																			"$then": "$.newSlotsData.slots",
+																			"$else": {
+																				"$mergearrays": [
+																					"$.newSlotsData.slots",
+																					{
+																						"extraslotnum": "$arraysize $.newSlotsData.slots",
+																						"placeholder": true
+																					}
+																				]
+																			}
+																		}
+																	},
+																	"Properties": {
+																		"RepositoryId": "3ed1c7e6-7707-48b4-a0f0-b933bc851fdb",
+																		"RepositoryAssets": {
+																			"$datacontext": {
+																				"in": "$.",
+																				"datavalues": {
+																					"slotsData": "$.newSlotsData.slots"
+																				},
+																				"do": {
+																					"$include": "menusystem/pages/planning/content/extraslots_repositoryids_constructor.json"
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											},
+											{
+												"$if $.placeholderSlotItem.equipped": {
+													"$then": {
+														"loadout": {
+															"mode": "unequip",
+															"slotid": "5"
+														}
+													}
+												}
+											},
+											{
+												"$if $.savedSlotInstance.equipped": {
+													"$then": {
+														"loadout": {
+															"mode": "equip",
+															"slotid": "5",
+															"instance": {
+																"InstanceId": "$.savedSlotInstance.instanceid",
+																"Unlockable": "$.savedSlotInstance.unlockable",
+																"Properties": {}
+															}
+														}
+													}
+												}
+											}
+										],
+										"$else": {
+											"$if $.rebuildRepoIds": {
+												"$then": [
+													{
+														"loadout": {
+															"mode": "equip",
+															"slotid": "0",
+															"instance": {
+																"InstanceId": "$formatstring Extra loadoutslots compound item - after updating amount",
+																"Unlockable": {
+																	"slotsData": "$.slotsData",
+																	"Properties": {
+																		"RepositoryId": "3ed1c7e6-7707-48b4-a0f0-b933bc851fdb",
+																		"RepositoryAssets": {
+																			"$include": "menusystem/pages/planning/content/extraslots_repositoryids_constructor.json"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												]
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			}
+		}
+	}]
+}

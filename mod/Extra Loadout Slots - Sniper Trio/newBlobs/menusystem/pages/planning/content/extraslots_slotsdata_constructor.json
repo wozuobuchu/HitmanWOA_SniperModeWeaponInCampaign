@@ -1,0 +1,40 @@
+{
+  "$if $eq($arraysize $.accumulator,$arraysize $.slotsData)": {
+    "$then": {
+      "slots": "$.accumulator",
+      "last": "$.lastSlot"
+    },
+    "$else": {
+      "$datacontext": {
+        "in": "$.",
+        "datavalues": {
+          "slotsData": "$.slotsData",
+          "editedSlotId": "$.editedSlotId",
+          "editedSlotData": "$.editedSlotData",
+          "lastSlot": {
+            "$if $eq($arraysize $.accumulator,$.editedSlotId)": {
+              "$then": "$.editedSlotData",
+              "$else": "$.slotsData[$arraysize $.accumulator]"
+            }
+          },
+          "accumulator": {
+            "$mergearrays": [
+              "$.accumulator",
+              [
+                {
+                  "$if $eq($arraysize $.accumulator,$.editedSlotId)": {
+                    "$then": "$.editedSlotData",
+                    "$else": "$.slotsData[$arraysize $.accumulator]"
+                  }
+                }
+              ]
+            ]
+          }
+        },
+        "do": {
+          "$include": "menusystem/pages/planning/content/extraslots_slotsdata_constructor.json"
+        }
+      }
+    }
+  }
+}

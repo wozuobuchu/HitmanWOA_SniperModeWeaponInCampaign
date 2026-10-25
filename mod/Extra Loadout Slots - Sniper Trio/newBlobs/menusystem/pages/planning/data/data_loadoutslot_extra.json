@@ -1,0 +1,32 @@
+{
+  "$databindingroot": {
+    "in": {
+      "$if": {
+        "$condition": {
+          "$and": [
+            "$not $isnullorempty $loadoutslot 5"
+          ]
+        },
+        "$then": {
+          "SlotId": "5",
+          "SlotName": "gear",
+          "Item": "$.item"
+        },
+        "$else": {
+          "SlotId": "5",
+          "SlotName": "gear",
+          "IsLimited": true,
+          "IsLimitedByEntrance": {
+            "$and": [
+              "$not $isnull $.EntranceLoadoutSettings.GearSlotsEnabledCount",
+              "$not $ge ($.EntranceLoadoutSettings.GearSlotsEnabledCount,2)"
+            ]
+          }
+        }
+      }
+    },
+    "databinding": {
+      "$include": "menusystem/pages/planning/data/data_loadoutslot_base_gear.json"
+    }
+  }
+}

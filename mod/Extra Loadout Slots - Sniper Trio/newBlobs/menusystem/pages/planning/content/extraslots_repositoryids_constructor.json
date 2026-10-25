@@ -1,0 +1,53 @@
+{
+  "$mergearrays": {
+    "$each $.slotsData": {
+      "$datacontext": {
+        "in": "$.",
+        "datavalues": {
+          "amount": {
+            "$if $gt($.count,0)": {
+              "$then": "$.count",
+              "$else": 1
+            }
+          },
+          "repoids": {
+            "$if $not $.item.unlockable.Properties.RepositoryAssets": {
+              "$then": [
+                "$.item.unlockable.Properties.RepositoryId"
+              ],
+              "$else": {
+                "$if $.alreadyismultiple": {
+                  "$then": [
+                    "$.item.unlockable.Properties.RepositoryAssets[0]"
+                  ],
+                  "$else": "$.item.unlockable.Properties.RepositoryAssets"
+                }
+              }
+            }
+          },
+          "counter": [
+            0
+          ]
+        },
+        "do": {
+          "$datacontext": {
+            "in": "$.",
+            "datavalues": {
+              "result": {
+                "$if $lt($arraysize $.repoids,1)": {
+                  "$then": {
+                    "repoids": []
+                  },
+                  "$else": {
+                    "$include": "menusystem/pages/planning/content/extraslots_repositoryids_constructor_sub.json"
+                  }
+                }
+              }
+            },
+            "do": "$.result.repoids"
+          }
+        }
+      }
+    }
+  }
+}

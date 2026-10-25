@@ -1,0 +1,65 @@
+{
+  "$datacontext": {
+    "in": "$.",
+    "datavalues": {
+      "counter": {
+        "$mergearrays": [
+          "$.counter",
+          "$.counter"
+        ]
+      },
+      "repoids": {
+        "$mergearrays": [
+          "$.repoids",
+          "$.repoids"
+        ]
+      },
+      "amount": "$.amount"
+    },
+    "do": {
+      "$if $not $gt($arraysize $.counter,$.amount)": {
+        "$then": {
+          "$datacontext": {
+            "in": "$.",
+            "datavalues": {
+              "next": {
+                "$include": "menusystem/pages/planning/content/extraslots_repositoryids_constructor_sub.json"
+              }
+            },
+            "do": {
+              "$datacontext": {
+                "in": "$.",
+                "datavalues": {
+                  "nextplusthis": {
+                    "counter": {
+                      "$mergearrays": [
+                        "$.next.counter",
+                        "$.@parent.@parent.counter"
+                      ]
+                    },
+                    "repoids": {
+                      "$mergearrays": [
+                        "$.next.repoids",
+                        "$.@parent.@parent.repoids"
+                      ]
+                    }
+                  }
+                },
+                "do": {
+                  "$if $not $gt($arraysize $.nextplusthis.counter,$.@parent.@parent.amount)": {
+                    "$then": "$.nextplusthis",
+                    "$else": "$.@parent.next"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "$else": {
+          "repoids": "$.@parent.repoids",
+          "counter": "$.@parent.counter"
+        }
+      }
+    }
+  }
+}

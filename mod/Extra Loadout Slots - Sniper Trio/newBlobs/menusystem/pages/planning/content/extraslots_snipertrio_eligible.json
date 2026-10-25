@@ -1,0 +1,103 @@
+{
+  "$switch $.@global.args.slotid": [
+    {
+      "case": null,
+      "return": false
+    },
+    {
+      "case": "",
+      "return": false
+    },
+    {
+      "case": 0,
+      "return": false
+    },
+    {
+      "case": 1,
+      "return": false
+    },
+    {
+      "case": 2,
+      "return": false
+    },
+    {
+      "case": 3,
+      "return": false
+    },
+    {
+      "case": 4,
+      "return": false
+    },
+    {
+      "case": 5,
+      "return": false
+    },
+    {
+      "case": "0",
+      "return": false
+    },
+    {
+      "case": "1",
+      "return": false
+    },
+    {
+      "case": "2",
+      "return": false
+    },
+    {
+      "case": "3",
+      "return": false
+    },
+    {
+      "case": "4",
+      "return": false
+    },
+    {
+      "case": "5",
+      "return": false
+    },
+    {
+      "case": "9fff18d3-6d6f-433c-a3f4-794b9cdfa8a5",
+      "return": false
+    },
+    {
+      "case": 6,
+      "return": {
+        "$switch $.@global.args.allowlargeitems": [
+          {
+            "case": true,
+            "return": true
+          },
+          {
+            "case": "true",
+            "return": true
+          },
+          {
+            "default": false
+          }
+        ]
+      }
+    },
+    {
+      "case": "6",
+      "return": {
+        "$switch $.@global.args.allowlargeitems": [
+          {
+            "case": true,
+            "return": true
+          },
+          {
+            "case": "true",
+            "return": true
+          },
+          {
+            "default": false
+          }
+        ]
+      }
+    },
+    {
+      "default": true
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/atampy25/simple-mod-framework/main/Mod%20Manager/src/lib/manifest-schema.json",
+  "version": "2.1.2",
+  "id": "enjoy.ExtraLoadoutSniperTrio",
+  "name": "Extra Loadout Slots - Sniper Trio",
+  "description": "Extra Loadout Slots 2.1.0 plus a Sniper Assassin category in briefcase and large stash selections, containing all three Agent 47 rifles. Includes the original extra slots and quantity controls. Disable the original Extra Loadout Slots mod.",
+  "authors": [
+    "grappigegovert (Extra Loadout Slots 2.1.0)",
+    "enjoy (local Sniper Trio fork)"
+  ],
+  "frameworkVersion": "2.33.28",
+  "blobsFolders": [
+    "newBlobs"
+  ],
+  "contentFolders": [
+    "fileEdits"
+  ],
+  "incompatibilities": [
+    "grappigegovert.extraloadoutslots"
+  ],
+  "localisation": {
+    "english": {
+      "UI_ELS_SA_DESCRIPTION": "Sniper Assassin original: normal, wall-piercing and shockwave magazines. Use the game's ammunition-switch controls (Z/X on the reported keyboard setup).",
+      "UI_ELS_SA_CATEGORY": "Sniper Assassin",
+      "UI_ELS_SA_HIMMELSTEIN_NAME": "Sieger 300 Ghost [SA - Himmelstein]",
+      "UI_ELS_SA_HANTU_NAME": "Druzhina 34 ICA [SA - Hantu Port]",
+      "UI_ELS_SA_SIBERIA_NAME": "Druzhina 34 ICA Arctic [SA - Siberia]"
+    },
+    "french": {
+      "UI_ELS_SA_DESCRIPTION": "Sniper Assassin original: normal, wall-piercing and shockwave magazines. Use the game's ammunition-switch controls (Z/X on the reported keyboard setup).",
+      "UI_ELS_SA_CATEGORY": "Sniper Assassin",
+      "UI_ELS_SA_HIMMELSTEIN_NAME": "Sieger 300 Ghost [SA - Himmelstein]",
+      "UI_ELS_SA_HANTU_NAME": "Druzhina 34 ICA [SA - Hantu Port]",
+      "UI_ELS_SA_SIBERIA_NAME": "Druzhina 34 ICA Arctic [SA - Siberia]"
+    },
+    "italian": {
+      "UI_ELS_SA_DESCRIPTION": "Sniper Assassin original: normal, wall-piercing and shockwave magazines. Use the game's ammunition-switch controls (Z/X on the reported keyboard setup).",
+      "UI_ELS_SA_CATEGORY": "Sniper Assassin",
+      "UI_ELS_SA_HIMMELSTEIN_NAME": "Sieger 300 Ghost [SA - Himmelstein]",
+      "UI_ELS_SA_HANTU_NAME": "Druzhina 34 ICA [SA - Hantu Port]",
+      "UI_ELS_SA_SIBERIA_NAME": "Druzhina 34 ICA Arctic [SA - Siberia]"
+    },
+    "german": {
+      "UI_ELS_SA_DESCRIPTION": "Sniper Assassin original: normal, wall-piercing and shockwave magazines. Use the game's ammunition-switch controls (Z/X on the reported keyboard setup).",
+      "UI_ELS_SA_CATEGORY": "Sniper Assassin",
+      "UI_ELS_SA_HIMMELSTEIN_NAME": "Sieger 300 Ghost [SA - Himmelstein]",
+      "UI_ELS_SA_HANTU_NAME": "Druzhina 34 ICA [SA - Hantu Port]",
+      "UI_ELS_SA_SIBERIA_NAME": "Druzhina 34 ICA Arctic [SA - Siberia]"
+    },
+    "spanish": {
+      "UI_ELS_SA_DESCRIPTION": "Sniper Assassin original: normal, wall-piercing and shockwave magazines. Use the game's ammunition-switch controls (Z/X on the reported keyboard setup).",
+      "UI_ELS_SA_CATEGORY": "Sniper Assassin",
+      "UI_ELS_SA_HIMMELSTEIN_NAME": "Sieger 300 Ghost [SA - Himmelstein]",
+      "UI_ELS_SA_HANTU_NAME": "Druzhina 34 ICA [SA - Hantu Port]",
+      "UI_ELS_SA_SIBERIA_NAME": "Druzhina 34 ICA Arctic [SA - Siberia]"
+    },
+    "russian": {
+      "UI_ELS_SA_DESCRIPTION": "Sniper Assassin original: normal, wall-piercing and shockwave magazines. Use the game's ammunition-switch controls (Z/X on the reported keyboard setup).",
+      "UI_ELS_SA_CATEGORY": "Sniper Assassin",
+      "UI_ELS_SA_HIMMELSTEIN_NAME": "Sieger 300 Ghost [SA - Himmelstein]",
+      "UI_ELS_SA_HANTU_NAME": "Druzhina 34 ICA [SA - Hantu Port]",
+      "UI_ELS_SA_SIBERIA_NAME": "Druzhina 34 ICA Arctic [SA - Siberia]"
+    },
+    "japanese": {
+      "UI_ELS_SA_DESCRIPTION": "Sniper Assassin original: normal, wall-piercing and shockwave magazines. Use the game's ammunition-switch controls (Z/X on the reported keyboard setup).",
+      "UI_ELS_SA_CATEGORY": "Sniper Assassin",
+      "UI_ELS_SA_HIMMELSTEIN_NAME": "Sieger 300 Ghost [SA - Himmelstein]",
+      "UI_ELS_SA_HANTU_NAME": "Druzhina 34 ICA [SA - Hantu Port]",
+      "UI_ELS_SA_SIBERIA_NAME": "Druzhina 34 ICA Arctic [SA - Siberia]"
+    },
+    "chineseSimplified": {
+      "UI_ELS_SA_DESCRIPTION": "狙击手模式原版：保留普通、穿墙与震荡弹匣。使用游戏的弹药切换按键（当前键位为 Z/X）。",
+      "UI_ELS_SA_CATEGORY": "狙击模式",
+      "UI_ELS_SA_HIMMELSTEIN_NAME": "Sieger 300 幽灵 [狙击模式·Himmelstein]",
+      "UI_ELS_SA_HANTU_NAME": "ICA 亲卫兵 34 [狙击模式·Hantu Port]",
+      "UI_ELS_SA_SIBERIA_NAME": "ICA 亲卫兵 34 北极型 [狙击模式·西伯利亚]"
+    },
+    "chineseTraditional": {
+      "UI_ELS_SA_DESCRIPTION": "狙擊手模式原版：保留普通、穿牆與震盪彈匣。使用遊戲的彈藥切換按鍵（目前鍵位為 Z/X）。",
+      "UI_ELS_SA_CATEGORY": "狙擊模式",
+      "UI_ELS_SA_HIMMELSTEIN_NAME": "Sieger 300 幽靈 [狙擊模式·Himmelstein]",
+      "UI_ELS_SA_HANTU_NAME": "ICA 親衛兵 34 [狙擊模式·Hantu Port]",
+      "UI_ELS_SA_SIBERIA_NAME": "ICA 親衛兵 34 北極型 [狙擊模式·西伯利亞]"
+    }
+  }
+}

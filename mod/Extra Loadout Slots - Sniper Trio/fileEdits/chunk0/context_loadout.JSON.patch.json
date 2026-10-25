@@ -1,0 +1,367 @@
+{
+	"file": "0040B1B857627936",
+	"type": "JSON",
+	"patch": [
+		{
+			"op": "add",
+			"path": "/$datacontext/do/navigationmode",
+			"value": "leaf-selection"
+		},
+		{
+			"op": "remove",
+			"path": "/$datacontext/do/children/7"
+		},
+		{
+			"op": "remove",
+			"path": "/$datacontext/do/children/6"
+		},
+		{
+			"op": "add",
+			"path": "/$datacontext/do/children/-",
+			"value": {
+				"$datacontext": {
+					"in": "$.",
+					"datavalues": {
+						"slotsData": {
+							"$if $not $isnull $($loadoutslot 0).Item.unlockable.slotsData": {
+								"$then": "$($loadoutslot 0).Item.unlockable.slotsData",
+								"$else": [
+									{
+										"extraslotnum": 0,
+										"placeholder": true
+									}
+								]
+							}
+						},
+						"lastEditedSlot": "$($loadoutslot 0).Item.unlockable.ActivatedSlot"
+					},
+					"do": {
+						"controller": "group",
+						"id": "extraslotsgroup",
+						"nrows": 3,
+						"layoutchildren": true,
+						"children": {
+							"$if $isnull $.lastEditedSlot": {
+								"$then": {
+									"$mergearrays": [
+										{
+											"$mergearrays": {
+												"$each $.slotsData": [
+													{
+														"$if": {
+															"$condition": {
+																"$or": [
+																	{
+																		"$and": [
+																			"$eq($.extraslotnum,0)",
+																			"$eq({$item {$loadoutslot 4}.Item.unlockable}.subtype,container)"
+																		]
+																	},
+																	{
+																		"$and": [
+																			"$eq($.extraslotnum,1)",
+																			"$eq({$item {$loadoutslot 5}.Item.unlockable}.subtype,container)"
+																		]
+																	}
+																]
+															},
+															"$then": {
+																"$datacontext $loadoutslot containers": {
+																	"$databinding menusystem/pages/planning/data/data_loadoutslot_container.json": {
+																		"$if $not $isnull $.": {
+																			"$then": {
+																				"id": "$formatstring loadout_overview_tile_{$.SlotId}",
+																				"view": "menu3.basic.ItemTileSmall",
+																				"pressable": "$.Pressable",
+																				"selectable": "$.Selectable",
+																				"visible": "$.Visible",
+																				"nrows": 1.5,
+																				"ncols": 2,
+																				"data": {
+																					"header": "$.Header",
+																					"title": "$.Title",
+																					"icon": "$.Icon",
+																					"iconstate": "$.Iconstate",
+																					"image": "$.Image",
+																					"disabledreason": "$.Disabledreason",
+																					"rarity": "$.Rarity",
+																					"perks": "$.Perks",
+																					"itemcount": "$.ItemCount"
+																				},
+																				"actions": {
+																					"$include": "menusystem/pages/planning/actions/actions_loadoutslot.json"
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													},
+													{
+														"$databinding menusystem/pages/planning/data/data_loadoutslot_extra.json": {
+															"id": "$formatstring loadout_overview_tile_extra_{$.@parent.extraslotnum,.0}",
+															"view": "menu3.basic.ItemTileSmall",
+															"pressable": "$.Pressable",
+															"nrows": 1.5,
+															"ncols": 2,
+															"data": {
+																"suitoverride": "$.SuitOverride",
+																"suitoverrideinfo": "$.SuitOverrideInfo",
+																"header": "$.Header",
+																"title": "$.Title",
+																"icon": "$.Icon",
+																"iconstate": "$.Iconstate",
+																"image": "$.Image",
+																"disabledreason": "$.Disabledreason",
+																"rarity": "$.Rarity",
+																"perks": "$.Perks",
+																"itemcount": "$.@parent.count"
+															},
+															"actions": {
+																"$mergeobjects": [
+																	{
+																		"$include": "menusystem/pages/planning/actions/actions_loadoutslot.json"
+																	},
+																	{
+																		"accept": [
+																			{
+																				"loadout": {
+																					"mode": "equip",
+																					"slotid": "0",
+																					"instance": {
+																						"InstanceId": "$formatstring Extra loadoutslots temp data storage CLICKED_{$.@parent.extraslotnum,.0}",
+																						"Unlockable": {
+																							"ActivatedSlot": "$.@parent.extraslotnum",
+																							"SavedSlotInstance": "$($loadoutslot 5).Item",
+																							"slotsData": "$.@parent.@parent.slotsData"
+																						}
+																					}
+																				}
+																			},
+																			{
+																				"loadout": {
+																					"mode": "unequip",
+																					"slotid": "5"
+																				}
+																			},
+																			{
+																				"link": {
+																					"page": "stashpoint",
+																					"args": {
+																						"url": "stashpoint",
+																						"args": {
+																							"contractid": "$.ContractId",
+																							"stashpoint": "",
+																							"allowlargeitems": false,
+																							"allowcontainers": false,
+																							"slotid": "9fff18d3-6d6f-433c-a3f4-794b9cdfa8a5",
+																							"$grappi-comment": "For anyone looking into this: that's just a random uuid, but I check for it in stashpointslot.json",
+																							"slotname": "$formatstring {$.SlotName}{$.SlotId}"
+																						},
+																						"contractid": "$.ContractId",
+																						"stashpoint": "",
+																						"slotname": "$formatstring {$.SlotName}{$.SlotId}",
+																						"slotid": "9fff18d3-6d6f-433c-a3f4-794b9cdfa8a5",
+																						"allowlargeitems": false,
+																						"allowcontainers": false,
+																						"icon": "$.SlotName",
+																						"selecteditem": "$.ItemId",
+																						"selectedtype": "$.ItemSubType",
+																						"usetalltile": "$.Actions.Link.UseTallTile",
+																						"usewhitelineheader": "$.Actions.Link.UseWhiteLineHeader",
+																						"usecacheonreturn": true
+																					}
+																				}
+																			}
+																		],
+																		"actiony": {
+																			"$if $not $.@parent.placeholder": {
+																				"$then": {
+																					"prompt_label": "$loc UI_BUTTON_PROMPTS_ACTION_LOADOUT_UNEQUIP",
+																					"loadout": {
+																						"mode": "equip",
+																						"slotid": "0",
+																						"instance": {
+																							"InstanceId": "$formatstring Extra loadoutslots compound item - after removing {$.@parent.extraslotnum,.0}/{$arraysize $.@parent.@parent.slotsData,.0}",
+																							"Unlockable": {
+																								"$datacontext": {
+																									"in": "$.",
+																									"datavalues": {
+																										"slotsData": {
+																											"$datacontext": {
+																												"in": "$.",
+																												"datavalues": {
+																													"slotsData": "$.@parent.@parent.slotsData",
+																													"slotIdToRemove": "$.@parent.extraslotnum",
+																													"accumulator": [],
+																													"counter": []
+																												},
+																												"do": {
+																													"$include": "menusystem/pages/planning/content/extraslots_slotsdata_removeone.json"
+																												}
+																											}
+																										}
+																									},
+																									"do": {
+																										"slotsData": "$.slotsData",
+																										"Properties": {
+																											"RepositoryId": "3ed1c7e6-7707-48b4-a0f0-b933bc851fdb",
+																											"RepositoryAssets": {
+																												"$include": "menusystem/pages/planning/content/extraslots_repositoryids_constructor.json"
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		},
+																		"actionx": {
+																			"$if $not $.@parent.placeholder": {
+																				"$then": {
+																					"prompt_label": "$loc UI_MENU_MISSION_END_DETAILS_EVERGREEN_AMOUNT",
+																					"show-edit-text-dialog": {
+																						"target": "$.@parent.count",
+																						"dialogtype": "line",
+																						"inputdialogstyle": "number",
+																						"config": {
+																							"title": "Set amount",
+																							"maxChars": 3,
+																							"restrict": "[0-9]"
+																						},
+																						"onbutton": [
+																							{
+																								"add-child": {
+																									"target": "extraslotsgroup",
+																									"child": {
+																										"id": "the-button-that-updates-the-count",
+																										"$grappi-comment": "Doing a loadout action directly did not work for some reason, so I add some indirection",
+																										"view": "menu3.basic.ItemTileSmall",
+																										"nrows": 1.5,
+																										"ncols": 2,
+																										"visible": false,
+																										"data": {
+																											"title": "THE BUTTON IS REAL"
+																										},
+																										"actions": {
+																											"activated": {
+																												"$datacontext": {
+																													"in": "$.",
+																													"datavalues": {
+																														"slotsData": {
+																															"$each $.@parent.@parent.slotsData": {
+																																"$if $eq($.extraslotnum,$.@parent.@parent.extraslotnum)": {
+																																	"$then": {
+																																		"$mergeobjects": [
+																																			"$.",
+																																			{
+																																				"count": "$.@parent.@parent.count",
+																																				"updatedCount": true
+																																			}
+																																		]
+																																	},
+																																	"$else": "$."
+																																}
+																															}
+																														}
+																													},
+																													"do": [
+																														{
+																															"loadout": {
+																																"mode": "equip",
+																																"slotid": "0",
+																																"instance": {
+																																	"InstanceId": "$formatstring Extra loadoutslots temp storage - after changing slot {$.@parent.@parent.extraslotnum,.0} count to {$.@parent.@parent.count}",
+																																	"Unlockable": {
+																																		"slotsData": "$.slotsData",
+																																		"rebuildRepoIds": true
+																																	}
+																																}
+																															}
+																														},
+																														{
+																															"link": {
+																																"$grappi-comment": "this essentially reloads the page",
+																																"page": "video"
+																															}
+																														}
+																													]
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						]
+																					}
+																				}
+																			}
+																		},
+																		"activated": {
+																			"call": {
+																				"target": "planning_scroll_container",
+																				"method": "updateScrollBar"
+																			}
+																		}
+																	}
+																]
+															}
+														}
+													}
+												]
+											}
+										},
+										{
+											"$if": {
+												"$condition": {
+													"$and": [
+														"$eq($arraysize $.slotsData,1)",
+														"$eq({$item {$loadoutslot 5}.Item.unlockable}.subtype,container)"
+													]
+												},
+												"$then": {
+													"$datacontext $loadoutslot containers": {
+														"$databinding menusystem/pages/planning/data/data_loadoutslot_container.json": {
+															"$if $not $isnull $.": {
+																"$then": {
+																	"id": "$formatstring loadout_overview_tile_{$.SlotId}",
+																	"view": "menu3.basic.ItemTileSmall",
+																	"pressable": "$.Pressable",
+																	"selectable": "$.Selectable",
+																	"visible": "$.Visible",
+																	"nrows": 1.5,
+																	"ncols": 2,
+																	"data": {
+																		"header": "$.Header",
+																		"title": "$.Title",
+																		"icon": "$.Icon",
+																		"iconstate": "$.Iconstate",
+																		"image": "$.Image",
+																		"disabledreason": "$.Disabledreason",
+																		"rarity": "$.Rarity",
+																		"perks": "$.Perks",
+																		"itemcount": "$.ItemCount"
+																	},
+																	"actions": {
+																		"$include": "menusystem/pages/planning/actions/actions_loadoutslot.json"
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	]
+}

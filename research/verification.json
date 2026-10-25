@@ -1,0 +1,390 @@
+{
+  "gameVersion": "3.280.0.0",
+  "checks": [
+    "Separate mod ID, original-mod incompatibility and no upstream auto-update",
+    "All 7 original non-manifest files preserved byte for byte",
+    "Original temporary-slot patch runs first; no stashpoint_page input override remains",
+    "All three RFC6902 patches apply to unmodified game resources",
+    "New category attaches to the installed original mod leaf; native inventory category tree is preserved",
+    "165 menu-expression cases: dynamic briefcase slots, large/small stash, reserved slots, empty inventory, boolean/string flags",
+    "All three original repository IDs resolve to normal, wall-piercing and shockwave magazines",
+    "Re-extracted SMF RPKG: three patched menus, seven registered blobs and EN/CN/TC localisation match source"
+  ],
+  "modVersion": "2.1.2",
+  "scope": "Static checks, a limited menu-expression simulator and separate SMF deployment. No live gameplay validation.",
+  "repositorySha256": "97d20aaad1d12f615e8a7afdedb6d3004588bd5b2b84a04df22a3b3b4c58f654",
+  "weapons": [
+    {
+      "map": "HIMMELSTEIN",
+      "name": "Sieger 300 Ghost [SA - Himmelstein]",
+      "repositoryId": "5f5e10e1-4c38-4fd0-ac16-8f42526ab232",
+      "runtime": "0001BD7A2263A50C",
+      "primaryConfiguration": "7b6eeaeb-c504-4af8-9374-432e0ae8f7f7",
+      "magazines": [
+        {
+          "ID_": "a29c35c2-526f-447e-b6ae-b15ad64bba67",
+          "AmmoConfig": "9d1b189d-ca04-446c-8714-7b2ae137424e",
+          "MagazineIndex": 2.0,
+          "MagazineSize": 4.0,
+          "Tags": [
+            "shockwavemag"
+          ]
+        },
+        {
+          "ID_": "38b41bbb-2bb3-4e83-9ccd-86a806f8cc4c",
+          "AmmoConfig": "3799282b-d127-4496-9148-507f68079b1e",
+          "MagazineSize": 4.0,
+          "Tags": [
+            "bodypiercingmag"
+          ],
+          "MagazineIndex": 0.0
+        },
+        {
+          "ID_": "1064bfbe-61d0-40e6-ac05-4a2c210a6e13",
+          "AmmoConfig": "87ae0524-2f22-4fe0-82e1-84a050b43cf0",
+          "MagazineIndex": 1.0,
+          "MagazineSize": 4.0,
+          "Tags": [
+            "wallpenetratingmag"
+          ]
+        }
+      ],
+      "ammunition": [
+        {
+          "ID_": "9d1b189d-ca04-446c-8714-7b2ae137424e",
+          "AmmoImpactEffect": "70857250233153741",
+          "Behaviours": [
+            "1f167090-14c4-4017-b9f6-489e5900aa41"
+          ],
+          "Name": "Shockwave Bullets",
+          "ScopeType": 1.0,
+          "UIKey": "tacticalshock",
+          "AmmoInFlightEffect": "18446744073709551615",
+          "GravityOverride": 0.0,
+          "ImpactEffects": [
+            "eIE_All"
+          ]
+        },
+        {
+          "ID_": "3799282b-d127-4496-9148-507f68079b1e",
+          "AmmoImpactEffect": "52248156751333819",
+          "Behaviours": [
+            "d4f0adc0-8ea3-42e0-83fe-ee7b4756ef2d"
+          ],
+          "Name": "Body Penetrating Bullets",
+          "UIKey": "highpressure",
+          "AmmoInFlightEffect": "18446744073709551615",
+          "GravityOverride": 0.0,
+          "ImpactEffects": [
+            "eIE_All"
+          ],
+          "ScopeType": 0.0
+        },
+        {
+          "ID_": "87ae0524-2f22-4fe0-82e1-84a050b43cf0",
+          "AmmoImpactEffect": "4916221499434710",
+          "Behaviours": [
+            "565885d4-1b37-4767-85a4-d83b2fd41bbc"
+          ],
+          "Name": "Wall Penetrating Bullets",
+          "ScopeType": 2.0,
+          "UIKey": "titaniumcomposite",
+          "AmmoInFlightEffect": "18446744073709551615",
+          "GravityOverride": 0.0,
+          "ImpactEffects": [
+            "eIE_All"
+          ]
+        }
+      ],
+      "behaviours": [
+        {
+          "ID_": "1f167090-14c4-4017-b9f6-489e5900aa41",
+          "EffectsRangeMultiplier": 1.0,
+          "LiftMultiplier": 1.2,
+          "MassImpulseType": "eMIT_ShockWave",
+          "Name": "ShockwaveAmmoBehaviour",
+          "PushOrigin": 3.0,
+          "RagdollImpulseMultiplier": 100.0,
+          "TargetRadii": 3.0,
+          "CenterStrength": 600.0,
+          "DeathContext": "eDC_MURDER",
+          "DeathType": "eDT_KILL",
+          "EffectsStrength": 0.0,
+          "LiftBias": 0.0,
+          "LiftSharpness": 3.0,
+          "PushBorder": 1.0,
+          "PushSharpness": 3.0,
+          "RespectsWalls": true,
+          "RotateMultiplier": 0.5,
+          "ShockwavePropagationSpeed": 25.0,
+          "TargetStrength": 400.0,
+          "Type": "eAB_Explosive"
+        },
+        {
+          "ID_": "d4f0adc0-8ea3-42e0-83fe-ee7b4756ef2d",
+          "Name": "Body Piercing",
+          "PenetratesEnvironment": false,
+          "AllowsHitReaction": true,
+          "PenetratesBodies": true,
+          "Type": "eAB_Penetration"
+        },
+        {
+          "ID_": "565885d4-1b37-4767-85a4-d83b2fd41bbc",
+          "Name": "Infinite Wall Penetrating",
+          "AllowsHitReaction": true,
+          "PenetratesBodies": true,
+          "PenetratesEnvironment": true,
+          "Type": "eAB_Penetration"
+        }
+      ]
+    },
+    {
+      "map": "HANTU",
+      "name": "Druzhina 34 ICA [SA - Hantu Port]",
+      "repositoryId": "c8b2d7ab-c952-4ad3-99fe-4627047318b9",
+      "runtime": "00B2EF154AF811DA",
+      "primaryConfiguration": "7b6eeaeb-c504-4af8-9374-432e0ae8f7f7",
+      "magazines": [
+        {
+          "ID_": "a29c35c2-526f-447e-b6ae-b15ad64bba67",
+          "AmmoConfig": "9d1b189d-ca04-446c-8714-7b2ae137424e",
+          "MagazineIndex": 2.0,
+          "MagazineSize": 4.0,
+          "Tags": [
+            "shockwavemag"
+          ]
+        },
+        {
+          "ID_": "38b41bbb-2bb3-4e83-9ccd-86a806f8cc4c",
+          "AmmoConfig": "3799282b-d127-4496-9148-507f68079b1e",
+          "MagazineSize": 4.0,
+          "Tags": [
+            "bodypiercingmag"
+          ],
+          "MagazineIndex": 0.0
+        },
+        {
+          "ID_": "1064bfbe-61d0-40e6-ac05-4a2c210a6e13",
+          "AmmoConfig": "87ae0524-2f22-4fe0-82e1-84a050b43cf0",
+          "MagazineIndex": 1.0,
+          "MagazineSize": 4.0,
+          "Tags": [
+            "wallpenetratingmag"
+          ]
+        }
+      ],
+      "ammunition": [
+        {
+          "ID_": "9d1b189d-ca04-446c-8714-7b2ae137424e",
+          "AmmoImpactEffect": "70857250233153741",
+          "Behaviours": [
+            "1f167090-14c4-4017-b9f6-489e5900aa41"
+          ],
+          "Name": "Shockwave Bullets",
+          "ScopeType": 1.0,
+          "UIKey": "tacticalshock",
+          "AmmoInFlightEffect": "18446744073709551615",
+          "GravityOverride": 0.0,
+          "ImpactEffects": [
+            "eIE_All"
+          ]
+        },
+        {
+          "ID_": "3799282b-d127-4496-9148-507f68079b1e",
+          "AmmoImpactEffect": "52248156751333819",
+          "Behaviours": [
+            "d4f0adc0-8ea3-42e0-83fe-ee7b4756ef2d"
+          ],
+          "Name": "Body Penetrating Bullets",
+          "UIKey": "highpressure",
+          "AmmoInFlightEffect": "18446744073709551615",
+          "GravityOverride": 0.0,
+          "ImpactEffects": [
+            "eIE_All"
+          ],
+          "ScopeType": 0.0
+        },
+        {
+          "ID_": "87ae0524-2f22-4fe0-82e1-84a050b43cf0",
+          "AmmoImpactEffect": "4916221499434710",
+          "Behaviours": [
+            "565885d4-1b37-4767-85a4-d83b2fd41bbc"
+          ],
+          "Name": "Wall Penetrating Bullets",
+          "ScopeType": 2.0,
+          "UIKey": "titaniumcomposite",
+          "AmmoInFlightEffect": "18446744073709551615",
+          "GravityOverride": 0.0,
+          "ImpactEffects": [
+            "eIE_All"
+          ]
+        }
+      ],
+      "behaviours": [
+        {
+          "ID_": "1f167090-14c4-4017-b9f6-489e5900aa41",
+          "EffectsRangeMultiplier": 1.0,
+          "LiftMultiplier": 1.2,
+          "MassImpulseType": "eMIT_ShockWave",
+          "Name": "ShockwaveAmmoBehaviour",
+          "PushOrigin": 3.0,
+          "RagdollImpulseMultiplier": 100.0,
+          "TargetRadii": 3.0,
+          "CenterStrength": 600.0,
+          "DeathContext": "eDC_MURDER",
+          "DeathType": "eDT_KILL",
+          "EffectsStrength": 0.0,
+          "LiftBias": 0.0,
+          "LiftSharpness": 3.0,
+          "PushBorder": 1.0,
+          "PushSharpness": 3.0,
+          "RespectsWalls": true,
+          "RotateMultiplier": 0.5,
+          "ShockwavePropagationSpeed": 25.0,
+          "TargetStrength": 400.0,
+          "Type": "eAB_Explosive"
+        },
+        {
+          "ID_": "d4f0adc0-8ea3-42e0-83fe-ee7b4756ef2d",
+          "Name": "Body Piercing",
+          "PenetratesEnvironment": false,
+          "AllowsHitReaction": true,
+          "PenetratesBodies": true,
+          "Type": "eAB_Penetration"
+        },
+        {
+          "ID_": "565885d4-1b37-4767-85a4-d83b2fd41bbc",
+          "Name": "Infinite Wall Penetrating",
+          "AllowsHitReaction": true,
+          "PenetratesBodies": true,
+          "PenetratesEnvironment": true,
+          "Type": "eAB_Penetration"
+        }
+      ]
+    },
+    {
+      "map": "SIBERIA",
+      "name": "Druzhina 34 ICA Arctic [SA - Siberia]",
+      "repositoryId": "2f209936-1427-43b6-9812-d6f60b24336f",
+      "runtime": "00B2EF154AF811DA",
+      "primaryConfiguration": "7b6eeaeb-c504-4af8-9374-432e0ae8f7f7",
+      "magazines": [
+        {
+          "ID_": "a29c35c2-526f-447e-b6ae-b15ad64bba67",
+          "AmmoConfig": "9d1b189d-ca04-446c-8714-7b2ae137424e",
+          "MagazineIndex": 2.0,
+          "MagazineSize": 4.0,
+          "Tags": [
+            "shockwavemag"
+          ]
+        },
+        {
+          "ID_": "38b41bbb-2bb3-4e83-9ccd-86a806f8cc4c",
+          "AmmoConfig": "3799282b-d127-4496-9148-507f68079b1e",
+          "MagazineSize": 4.0,
+          "Tags": [
+            "bodypiercingmag"
+          ],
+          "MagazineIndex": 0.0
+        },
+        {
+          "ID_": "1064bfbe-61d0-40e6-ac05-4a2c210a6e13",
+          "AmmoConfig": "87ae0524-2f22-4fe0-82e1-84a050b43cf0",
+          "MagazineIndex": 1.0,
+          "MagazineSize": 4.0,
+          "Tags": [
+            "wallpenetratingmag"
+          ]
+        }
+      ],
+      "ammunition": [
+        {
+          "ID_": "9d1b189d-ca04-446c-8714-7b2ae137424e",
+          "AmmoImpactEffect": "70857250233153741",
+          "Behaviours": [
+            "1f167090-14c4-4017-b9f6-489e5900aa41"
+          ],
+          "Name": "Shockwave Bullets",
+          "ScopeType": 1.0,
+          "UIKey": "tacticalshock",
+          "AmmoInFlightEffect": "18446744073709551615",
+          "GravityOverride": 0.0,
+          "ImpactEffects": [
+            "eIE_All"
+          ]
+        },
+        {
+          "ID_": "3799282b-d127-4496-9148-507f68079b1e",
+          "AmmoImpactEffect": "52248156751333819",
+          "Behaviours": [
+            "d4f0adc0-8ea3-42e0-83fe-ee7b4756ef2d"
+          ],
+          "Name": "Body Penetrating Bullets",
+          "UIKey": "highpressure",
+          "AmmoInFlightEffect": "18446744073709551615",
+          "GravityOverride": 0.0,
+          "ImpactEffects": [
+            "eIE_All"
+          ],
+          "ScopeType": 0.0
+        },
+        {
+          "ID_": "87ae0524-2f22-4fe0-82e1-84a050b43cf0",
+          "AmmoImpactEffect": "4916221499434710",
+          "Behaviours": [
+            "565885d4-1b37-4767-85a4-d83b2fd41bbc"
+          ],
+          "Name": "Wall Penetrating Bullets",
+          "ScopeType": 2.0,
+          "UIKey": "titaniumcomposite",
+          "AmmoInFlightEffect": "18446744073709551615",
+          "GravityOverride": 0.0,
+          "ImpactEffects": [
+            "eIE_All"
+          ]
+        }
+      ],
+      "behaviours": [
+        {
+          "ID_": "1f167090-14c4-4017-b9f6-489e5900aa41",
+          "EffectsRangeMultiplier": 1.0,
+          "LiftMultiplier": 1.2,
+          "MassImpulseType": "eMIT_ShockWave",
+          "Name": "ShockwaveAmmoBehaviour",
+          "PushOrigin": 3.0,
+          "RagdollImpulseMultiplier": 100.0,
+          "TargetRadii": 3.0,
+          "CenterStrength": 600.0,
+          "DeathContext": "eDC_MURDER",
+          "DeathType": "eDT_KILL",
+          "EffectsStrength": 0.0,
+          "LiftBias": 0.0,
+          "LiftSharpness": 3.0,
+          "PushBorder": 1.0,
+          "PushSharpness": 3.0,
+          "RespectsWalls": true,
+          "RotateMultiplier": 0.5,
+          "ShockwavePropagationSpeed": 25.0,
+          "TargetStrength": 400.0,
+          "Type": "eAB_Explosive"
+        },
+        {
+          "ID_": "d4f0adc0-8ea3-42e0-83fe-ee7b4756ef2d",
+          "Name": "Body Piercing",
+          "PenetratesEnvironment": false,
+          "AllowsHitReaction": true,
+          "PenetratesBodies": true,
+          "Type": "eAB_Penetration"
+        },
+        {
+          "ID_": "565885d4-1b37-4767-85a4-d83b2fd41bbc",
+          "Name": "Infinite Wall Penetrating",
+          "AllowsHitReaction": true,
+          "PenetratesBodies": true,
+          "PenetratesEnvironment": true,
+          "Type": "eAB_Penetration"
+        }
+      ]
+    }
+  ]
+}
